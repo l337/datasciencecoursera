@@ -7,14 +7,23 @@ best <- function(state, outcome) {
     statevalid <- match(state, checkstate)
     outcomes <- c("heart attack", "heart failure", "pneumonia")
     outcomevalid <- match(outcome, outcomes)
+    heartattack <- as.numeric()
     
     if(is.na(statevalid)) {
         stop("invalid state");
     } else if(is.na(outcomevalid)) {
         stop("invalid outcome")
     } else {
-        ## Return hospital name in that state with lowest 30-day death
-        ## rate
+        subregion <- subset(data, data$State==state)
+        if(outcome == outcomes[1]) {
+            heartvalues <- suppressWarnings(as.numeric(na.omit(subregion$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack)))
+        } else if(outcome == outcomes[2]) {
+            heartvalues <- suppressWarnings(as.numeric(na.omit(subregion$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure)))
+        } else {
+            heartvalues <- suppressWarnings(as.numeric(na.omit(subregion$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia)))
+        }
+        newerlist <- list(name=subregion$Hospital.Name, values=heartvalues)
+        elem <- match(min(newerlist$values, na.rm=T), newerlist$values)
+        newerlist$name[elem]
     }
 }
-best("NY", "heart attack")
