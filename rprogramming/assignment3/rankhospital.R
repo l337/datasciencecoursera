@@ -10,7 +10,7 @@ rankhospital <- function(state, outcome, num) {
     if(num > newdata$order[length(newdata)]) {
         print(NA)
     } else {
-        # orders by the matches above [1] returns the first result instead of last result
+        # orders results based on match of num, returns the first result if there is a tie
         as.character(firstvalue$name[1])   
     }
     ## 30-day death rate
