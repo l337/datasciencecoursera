@@ -7,7 +7,6 @@ best <- function(state, outcome) {
     statevalid <- match(state, checkstate)
     outcomes <- c("heart attack", "heart failure", "pneumonia")
     outcomevalid <- match(outcome, outcomes)
-    heartattack <- as.numeric()
     
     if(is.na(statevalid)) {
         stop("invalid state");
