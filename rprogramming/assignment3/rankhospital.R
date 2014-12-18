@@ -38,5 +38,5 @@ rank <- function(hospital, columnresult) {
                       "heart failure" = 17,
                       "pneumonia" = 23)
     values <- suppressWarnings(as.numeric(hospital[,outcome]))
-    data.frame(order=1:length(values),name=hospital$Hospital.Name, state=hospital$State, causeofdeath=values)
+    data.frame(name=hospital$Hospital.Name, state=hospital$State, causeofdeath=values)
 }
