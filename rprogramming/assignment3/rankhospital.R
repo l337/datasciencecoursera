@@ -17,7 +17,7 @@ rankhospital <- function(state, outcome, num) {
         newdata <- na.omit(subdata[order(subdata$causeofdeath, subdata$name),])
         
         # if num is outside the length of the data there shouldn't be any data for that result
-        if(is.numeric(num) & num > newdata$order[length(newdata)]) {
+        if(is.numeric(num) & num > length(newdata$name)) {
             print(NA)
         } else {
             if(num == "best") {
