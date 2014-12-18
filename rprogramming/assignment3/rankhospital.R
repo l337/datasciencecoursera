@@ -15,7 +15,7 @@ rankhospital <- function(state, outcome, num) {
         subregion <- subset(data, data$State==state)
         subdata <- rank(subregion, outcome)
         # sorted data from lowest to highest
-        newdata <- subdata[order(subdata$heartfailure),]
+        newdata <- subdata[order(subdata$causeofdeath),]
     }
     
     if(num == "best") {
@@ -23,7 +23,7 @@ rankhospital <- function(state, outcome, num) {
     } else if(num == "worst") {
         
     } else {
-        firstvalue <- newdata[order(match(newdata$heartfailure,newdata[num,"heartfailure"])),]
+        firstvalue <- newdata[order(match(newdata$causeofdeath,newdata[num,"causeofdeath"])),]
     }
     
     # if num is outside the length of the data there shouldn't be any data for that result
@@ -43,7 +43,7 @@ rank <- function(hospital, columnresult) {
                       "heart failure" = 17,
                       "pneumonia" = 23)
     values <- suppressWarnings(as.numeric(hospital[,outcome]))
-    data.frame(order=1:length(values),name=hospital$Hospital.Name, state=hospital$State, heartfailure=values)
+    data.frame(order=1:length(values),name=hospital$Hospital.Name, state=hospital$State, causeofdeath=values)
 }
 
 rankhospital("TX", "heart failure", 15)
