@@ -42,16 +42,26 @@ download.file(fileCsvURL, destfile="./data/newidahohousing.csv", method="curl")
 
 temp <- fread("./data/newidahohousing.csv")
 DT <- data.table(temp)
-resultSample <- 1000
-for (i in 1:resultSample) {
-    test1 <- system.time(mean(DT[DT$SEX==1,]$pwgtp15))
-}
+
+resultSample <- 500
+test1 <- system.time(replicate(resultSample, { mean(DT[DT$SEX==1,]$pwgtp15); mean(DT[DT$SEX==2,]$pwgtp15) }))
 test1
 
+test2 <- system.time(replicate(resultSample, { mean(DT$pwgtp15,by=DT$SEX) }))
+test2
+
+test3 <- system.time(replicate(resultSample, { sapply(split(DT$pwgtp15,DT$SEX),mean) }))
+test3
+
+test4 <- system.time(replicate(resultSample, { DT[,mean(DT$pwgtp15),by=DT$SEX] }))
+test4
+
+
 # Different ways to calculate the average value
-#system.time(mean(DT[DT$SEX==1,]$pwgtp15))
-#system.time(mean(DT$pwgtp15,by=DT$SEX))
-#system.time(sapply(split(DT$pwgtp15,DT$SEX),mean))
-#system.time(DT[,mean(pwgtp15),by=SEX]) #***
-#system.time(tapply(DT$pwgtp15,DT$SEX,mean))
+# mean(DT[DT$SEX==1,]$pwgtp15); mean(DT[DT$SEX==2,]$pwgtp15)
+# mean(DT$pwgtp15,by=DT$SEX)
+# sapply(split(DT$pwgtp15,DT$SEX),mean)
+# DT[,mean(pwgtp15),by=SEX] #***
+# tapply(DT$pwgtp15,DT$SEX,mean)
+# rowMeans(DT)[DT$SEX==1]; rowMeans(DT)[DT$SEX==2]
 # END Question Five
