@@ -53,7 +53,7 @@ test2
 test3 <- system.time(replicate(resultSample, { sapply(split(DT$pwgtp15,DT$SEX),mean) }))
 test3
 
-test4 <- system.time(replicate(resultSample, { DT[,mean(DT$pwgtp15),by=DT$SEX] }))
+test4 <- system.time(replicate(resultSample, { DT[,mean(pwgtp15),by=SEX] }))
 test4
 
 
