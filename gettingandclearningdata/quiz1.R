@@ -42,11 +42,16 @@ download.file(fileCsvURL, destfile="./data/newidahohousing.csv", method="curl")
 
 temp <- fread("./data/newidahohousing.csv")
 DT <- data.table(temp)
+resultSample <- 1000
+for (i in 1:resultSample) {
+    test1 <- system.time(mean(DT[DT$SEX==1,]$pwgtp15))
+}
+test1
 
 # Different ways to calculate the average value
-system.time(mean(DT[DT$SEX==1,]$pwgtp15))
-system.time(mean(DT$pwgtp15,by=DT$SEX))
-system.time(sapply(split(DT$pwgtp15,DT$SEX),mean))
-system.time(DT[,mean(pwgtp15),by=SEX]) #***
-system.time(tapply(DT$pwgtp15,DT$SEX,mean))
+#system.time(mean(DT[DT$SEX==1,]$pwgtp15))
+#system.time(mean(DT$pwgtp15,by=DT$SEX))
+#system.time(sapply(split(DT$pwgtp15,DT$SEX),mean))
+#system.time(DT[,mean(pwgtp15),by=SEX]) #***
+#system.time(tapply(DT$pwgtp15,DT$SEX,mean))
 # END Question Five
