@@ -24,8 +24,8 @@ createdAt
 # Question two
 fileCsvURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv"
 download.file(fileCsvURL, destfile="./data/americancommunitysurvey", method="curl")
-data <- read.csv("./data/idahohousing.csv")
-data
+acs <- read.csv("./data/idahohousing.csv")
+acs
 
 
 # END Question two
