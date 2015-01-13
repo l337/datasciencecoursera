@@ -23,5 +23,9 @@ download.file(educational, destfile="./data/educational.csv", method="curl")
 domesticgrossdata <- read.csv("./data/grossdomestic.csv")
 educationaldata <- read.csv("./data/educational.csv")
 
-# grossdomestic
-# educationaldata
+mergedData <- merge(domesticgrossdata, educationaldata, by.x="X", by.y="CountryCode")
+sorteddata <- arrange(mergedData, desc(Gross.domestic.product.2012))
+sorteddata[13,]
+
+# str(domesticgrossdata)
+# names(educationaldata)
