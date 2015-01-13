@@ -19,3 +19,9 @@ grossdomestic <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv
 educational <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv"
 download.file(grossdomestic, destfile="./data/grossdomestic.csv", method="curl")
 download.file(educational, destfile="./data/educational.csv", method="curl")
+
+domesticgrossdata <- read.csv("./data/grossdomestic.csv")
+educationaldata <- read.csv("./data/educational.csv")
+
+# grossdomestic
+# educationaldata
