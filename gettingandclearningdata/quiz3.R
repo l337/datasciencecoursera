@@ -6,3 +6,14 @@ data <- read.csv("./data/idahohousing.csv")
 selectdata <- select(data, ACR, AGS)
 agricultureLogical <- selectdata[which(selectdata$ACR == 3 & selectdata$AGS == 6),]
 agricultureLogical
+
+# Question Two
+library(jpeg)
+filejpgURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fjeff.jpg"
+download.file(filejpgURL, destfile="./data/data.jpg", method="curl")
+img.n <- readJPEG("./data/data.jpg", native=TRUE)
+quantile(img.n, c(0.3, 0.8))
+
+# Question Three
+
+
