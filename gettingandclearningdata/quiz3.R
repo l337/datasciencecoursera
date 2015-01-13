@@ -15,5 +15,7 @@ img.n <- readJPEG("./data/data.jpg", native=TRUE)
 quantile(img.n, c(0.3, 0.8))
 
 # Question Three
-
-
+grossdomestic <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv"
+educational <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv"
+download.file(grossdomestic, destfile="./data/grossdomestic.csv", method="curl")
+download.file(educational, destfile="./data/educational.csv", method="curl")
