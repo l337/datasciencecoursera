@@ -7,11 +7,11 @@
 features <- read.table('./data/UCI HAR Dataset/features.txt')
 activityType <- read.table('./data/UCI HAR Dataset/activity_labels.txt')
 subjectTrain <- read.table('./data/UCI HAR Dataset/train/subject_train.txt')
-xTrain <- read.table('./data/UCI HAR Dataset/train/x_train.txt')
-yTrain <- read.table('./data/UCI HAR Dataset/train/y_train.txt')
+x_train <- read.table('./data/UCI HAR Dataset/train/x_train.txt')
+y_train <- read.table('./data/UCI HAR Dataset/train/y_train.txt')
 
 # Assigin column names to the data imported above
 colnames(activityType) <- c('activityId','activityType');
 colnames(subjectTrain) <- "subjectId";
-colnames(xTrain) <- features[,2]; 
-colnames(yTrain) <- "activityId";
+colnames(x_train) <- features[,2]; 
+colnames(y_train) <- "activityId";
